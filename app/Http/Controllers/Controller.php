@@ -10,4 +10,16 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected $uri = '';
+    protected $modelName = '';
+    protected $pageInfo = [];
+    protected $filter = [];
+    protected $backData = [];
+
+
+    public function __construct()
+    {
+
+    }
 }
