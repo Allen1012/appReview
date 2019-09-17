@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Model\AdsDailyCampaignReport;
 use App\Model\AdsDailyCountryCampaignReport;
 use App\Model\BaseModel;
+use Ixudra\Curl\Facades\Curl;
 
 class TestController extends Controller
 {
@@ -43,6 +44,17 @@ class TestController extends Controller
     public function index(){
 
         date_default_timezone_set("PRC");
+
+        $response = Curl::to('http://www.foo.com/bar')
+            ->withData( array( 'foz' => 'baz' ) )
+            ->asJson()
+            ->get();
+
+        dd($response);
+        $ret = Curl::to('http://www.foo.com/bar')->get();
+        dd($ret);
+
+        die();
 //        $json = '{"173933459864604":[{"type":"ads_insights","call_count":1,"total_cputime":3,"total_time":4,"estimated_time_to_regain_access":0}]}';
 //        $ret = json_decode($json,true);
 //        foreach ($ret as $accountId => $value){
